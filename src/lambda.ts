@@ -3,6 +3,7 @@ import { Duration } from 'aws-cdk-lib';
 import { Role } from 'aws-cdk-lib/aws-iam';
 import { Function, Code, Runtime, Architecture } from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
+import * as iam from 'aws-cdk-lib/aws-iam';
 
 interface LambdaProps {
   role: Role;
@@ -29,6 +30,11 @@ export class Lambda extends Construct {
       handler: 'index.lambda_handler',
       timeout: Duration.minutes(5),
       role: props.role,
+    });
+
+    this.queryLambda.addPermission('agent', {
+      principal: new iam.ServicePrincipal('bedrock.amazonaws.com'),
+      action: 'lambda:InvokeFunction',
     });
   }
 }
