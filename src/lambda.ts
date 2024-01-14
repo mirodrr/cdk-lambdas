@@ -14,7 +14,7 @@ export class Lambda extends Construct {
     super(scope, id);
 
     this.queryLambda = new Function(this, 'QueryLambda', {
-      code: Code.fromAsset(path.join(__dirname, 'resources/query_lambda'), {
+      code: Code.fromAsset(path.join(__dirname, 'resources/sample_lambda'), {
         bundling: {
           image: Runtime.PYTHON_3_9.bundlingImage,
           command: [
@@ -26,7 +26,7 @@ export class Lambda extends Construct {
       }),
       runtime: Runtime.PYTHON_3_9,
       architecture: Architecture.X86_64,
-      handler: 'index.handler',
+      handler: 'index.lambda_handler',
       timeout: Duration.minutes(5),
       role: props.role,
     });
