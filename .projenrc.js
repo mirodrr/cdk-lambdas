@@ -5,8 +5,8 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   author: 'Court Schuett',
   copyrightOwner: 'Court Schuett',
   defaultReleaseBranch: 'main',
-  name: 'private-rds-with-lambda',
-  appEntrypoint: 'private-rds-with-lambda.ts',
+  name: 'agent-lambda',
+  appEntrypoint: 'agent-lambda.ts',
   depsUpgradeOptions: {
     ignoreProjen: false,
     workflowOptions: {
